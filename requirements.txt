@@ -1,0 +1,2 @@
+bottle==0.12.19
+graphene==2.1.8
