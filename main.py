@@ -2,7 +2,8 @@
 
 # third-party libraries
 from bottle import run, route
-import graphene
+
+# local packages
 
 
 @route("/graphql")
@@ -10,4 +11,4 @@ def graphQL():
     return "response"
 
 
-run(host="localhost", port=5000)
+run(host="localhost", port=5000, debug=True)
