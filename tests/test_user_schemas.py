@@ -2,10 +2,21 @@
 import unittest
 
 # third-party dependencies
-from graphene.test import Client
 
 # local packages
-from simple_graphql.schemas.user_schema import UserSchema
+from simple_graphql.schema import schema
 
-class ExecuteQueriesOnUserSchemea(unittest.TestCase):
-    pass
+
+class ExecuteQueriesOnSimpleSchemea(unittest.TestCase):
+    def test_querying(self):
+
+        excuted = schema.excute("{ users { name } }")
+        print(excuted)
+
+        expected_response = {"data": {"users": []}}
+
+        self.assertEqual(excuted, expected_response)
+
+
+if __name__ == "__main__":
+    unittest.main()

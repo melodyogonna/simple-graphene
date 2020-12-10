@@ -2,6 +2,7 @@
 
 # third-party libraries
 from bottle import run, route
+from simple_graphql import schema
 
 # local packages
 

@@ -1,15 +1,16 @@
-from graphene import ObjectType, String, Schema
+import graphene
 
-from simple_graphql.schemas.user_schema import UserSchema
+from simple_graphql.schemas.user_schema import User
 
 
-class Query(ObjectType):
+class Query(graphene.ObjectType):
     """Basic GraphQL Schema definition"""
 
-    users = UserSchema()
+    users = graphene.Field(User)
 
-    def resolve_users(self, info):
-        return users
+    @staticmethod
+    def resolve_users(root, info):
+        return User(name="melody", email="meldl@jdj.lld")
 
 
-schema = Schema(query=Query)
+schema = graphene.Schema(query=Query)
