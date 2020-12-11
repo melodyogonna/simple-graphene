@@ -2,6 +2,7 @@
 import unittest
 
 # third-party dependencies
+from graphene.test import Client
 
 # local packages
 from simple_graphql.schema import schema
@@ -9,11 +10,10 @@ from simple_graphql.schema import schema
 
 class ExecuteQueriesOnSimpleSchemea(unittest.TestCase):
     def test_querying(self):
+        client = Client(schema)
+        excuted = client.execute("{ users { name } }")
 
-        excuted = schema.excute("{ users { name } }")
-        print(excuted)
-
-        expected_response = {"data": {"users": []}}
+        expected_response = {"data": {"users": {"name": "melody"}}}
 
         self.assertEqual(excuted, expected_response)
 
