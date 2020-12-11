@@ -2,20 +2,19 @@
 import unittest
 
 # third-party dependencies
+from snapshottest import TestCase
 from graphene.test import Client
 
 # local packages
-from simple_graphql.schema import schema
+from simple_graphql.main import schema
 
 
-class ExecuteQueriesOnSimpleSchemea(unittest.TestCase):
+class ExecuteQueriesOnSimpleSchemea(TestCase):
     def test_querying(self):
         client = Client(schema)
         excuted = client.execute("{ users { name } }")
 
-        expected_response = {"data": {"users": {"name": "melody"}}}
-
-        self.assertEqual(excuted, expected_response)
+        self.assertMatchSnapshot(excuted)
 
 
 if __name__ == "__main__":
